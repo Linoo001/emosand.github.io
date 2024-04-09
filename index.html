@@ -25,8 +25,6 @@
         position: absolute;
         right: -210px;
         top: 0;
-        background-size: cover;
-        background-position: center;
     }
     .upload-button {
         position: absolute;
@@ -45,16 +43,34 @@
 
 <div class="gray-square">
     <div class="small-gray-square"></div>
-    <button class="upload-button" onclick="showImage()">UPLOAD</button>
+    <button class="upload-button" onclick="uploadImage()">UPLOAD</button>
 </div>
 
 <script>
-function showImage() {
-    var imgSrc = "C:\\Users\\86130\\Desktop\\picture\\1.png"; // 确定的图片路径
+function uploadImage() {
+    // 创建一个<input type="file">元素
+    var input = document.createElement('input');
+    input.type = 'file';
+    
+    // 当文件选择变化时
+    input.onchange = function(event) {
+        var file = event.target.files[0]; // 获取选定的文件
+        
+        // 如果有文件被选择
+        if (file) {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var imgSrc = event.target.result; // 获取文件的base64编码
 
-    // 将图片显示在右上角的小正方形中
-    var smallSquare = document.querySelector('.small-gray-square');
-    smallSquare.style.backgroundImage = 'url(' + imgSrc + ')';
+                // 将图片显示在右上角的小正方形中
+                var smallSquare = document.querySelector('.small-gray-square');
+                smallSquare.style.backgroundImage = 'url(' + imgSrc + ')';
+            };
+            reader.readAsDataURL(file); // 将文件读取为base64编码
+        }
+    };
+    
+    input.click(); // 触发文件选择对话框
 }
 </script>
 

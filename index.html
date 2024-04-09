@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gray Squares</title>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .gray-square {
+        width: 700px;
+        height: 700px;
+        background-color: rgb(232, 232, 232);
+        position: relative;
+    }
+    .small-gray-square {
+        width: 200px;
+        height: 200px;
+        background-color: rgb(214, 214, 214);
+        position: absolute;
+        right: -210px;
+        top: 0;
+        background-size: cover;
+        background-position: center;
+    }
+    .upload-button {
+        position: absolute;
+        top: 220px; /* 小正方形底部位置 */
+        right: -210px; /* 与小正方形右边对齐 */
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<div class="gray-square">
+    <div class="small-gray-square"></div>
+    <button class="upload-button" onclick="showImage()">UPLOAD</button>
+</div>
+
+<script>
+function showImage() {
+    var imgSrc = "C:\\Users\\86130\\Desktop\\picture\\1.png"; // 确定的图片路径
+
+    // 将图片显示在右上角的小正方形中
+    var smallSquare = document.querySelector('.small-gray-square');
+    smallSquare.style.backgroundImage = 'url(' + imgSrc + ')';
+}
+</script>
+
+</body>
+</html>
+
+
+
+
